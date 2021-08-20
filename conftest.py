@@ -14,6 +14,7 @@ def pytest_addoption(parser):
 @pytest.fixture
 def browser(request):
     current_browser = request.config.getoption("--browser")
+    url = request.config.getoption("--url")
     headless = request.config.getoption("--headless")
     maximized = request.config.getoption("--maximized")
 
@@ -38,11 +39,17 @@ def browser(request):
     if maximized:
         driver.maximize_window()
 
+    def open(path=""):
+        return driver.get(url + path)
+
+    driver.open = open
+    driver.open()
+
     request.addfinalizer(driver.quit)
 
     return driver
 
 
 @pytest.fixture
-def base_url(request):
-    return request.config.getoption("--url")
+def user():
+    return "user", "bitnami"
