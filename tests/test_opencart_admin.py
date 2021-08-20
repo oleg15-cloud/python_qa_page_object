@@ -3,7 +3,7 @@ from page_object.opencart_admin.MainPageAdmin import MainPageAdmin
 from page_object.opencart_admin.ProductPageAdmin import ProductPageAdmin
 
 
-def test_auth(browser, user):
+def test_adding_a_new_product_in_the_admin_section(browser, user):
     LoginPageAdmin(browser).authorization_with(*user)
     MainPageAdmin(browser).go_to_product_page()
     ProductPageAdmin(browser).go_to_add_new_product_form()
