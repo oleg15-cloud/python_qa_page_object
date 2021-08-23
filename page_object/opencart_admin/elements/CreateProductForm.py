@@ -1,5 +1,3 @@
-import random
-
 from selenium.webdriver.common.by import By
 from page_object.opencart_admin.BasePageAdmin import BasePageAdmin
 

@@ -5,9 +5,9 @@ from page_object.opencart.BasePage import BasePage
 class RegistrationPage(BasePage):
 
     def create_new_user(self):
-        UserRegistrationForm(self.browser)\
-            .fill_out_registration_form()\
-            .accept_privacy_policy()\
+        UserRegistrationForm(self.browser) \
+            .fill_out_registration_form() \
+            .accept_privacy_policy() \
             .send_registration_form()
         return self
 
