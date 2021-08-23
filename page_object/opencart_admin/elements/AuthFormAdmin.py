@@ -9,10 +9,6 @@ class AuthFormAdmin(BasePageAdmin):
     INPUT_PASSWORD = (By.XPATH, "//input[@name='password']")
     BTN_LOGIN = (By.XPATH, "//button[@class='btn btn-primary']")
 
-    def open_login_page(self):
-        self.browser.open(self.path)
-        return self
-
     def fill_out_auth_form(self, username, password):
         self.browser.find_element(*self.INPUT_USERNAME).clear()
         self.browser.find_element(*self.INPUT_USERNAME).send_keys(username)
