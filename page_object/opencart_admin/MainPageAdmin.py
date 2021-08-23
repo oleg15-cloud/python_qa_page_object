@@ -1,17 +1,10 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-
-from selenium.webdriver.common.by import By
+from page_object.opencart_admin.BasePageAdmin import BasePageAdmin
+from page_object.opencart_admin.elements.Navigation import Navigation
 
 
-class MainPageAdmin:
-    NAVIGATION_CATALOG = (By.XPATH, "//li[@id='menu-catalog']")
-    NAVIGATION_CATALOG_PRODUCTS = "//a[text()='Products']"
-
-    def __init__(self, browser):
-        self.browser = browser
+class MainPageAdmin(BasePageAdmin):
 
     def go_to_product_page(self):
-        self.browser.find_element(*self.NAVIGATION_CATALOG).click()
-        WebDriverWait(self.browser, 3).until(
-            ec.visibility_of_element_located((By.XPATH, self.NAVIGATION_CATALOG_PRODUCTS))).click()
+        Navigation(self.browser)\
+            .open_catalog_dropdown()\
+            .go_to_product_page()
