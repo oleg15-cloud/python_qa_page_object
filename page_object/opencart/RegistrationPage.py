@@ -1,8 +1,10 @@
 import time
+
 from selenium.webdriver.common.by import By
+from page_object.opencart.BasePage import BasePage
 
 
-class RegistrationPage:
+class RegistrationPage(BasePage):
     INPUT_FIRST_NAME = (By.XPATH, "//input[@name='firstname']")
     INPUT_LAST_NAME = (By.XPATH, "//input[@name='lastname']")
     INPUT_EMAIL = (By.XPATH, "//input[@name='email']")
@@ -15,9 +17,6 @@ class RegistrationPage:
     BTN_CONTINUE = (By.XPATH, "//input[@value='Continue']")
 
     SUCCESS_REGISTRATION_MESSAGE = (By.XPATH, "//h1[text()='Your Account Has Been Created!']")
-
-    def __init__(self, browser):
-        self.browser = browser
 
     def create_new_user(self):
         _time = time.time_ns()
