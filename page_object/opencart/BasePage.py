@@ -5,15 +5,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 
-class MainPage:
+class BasePage:
     BTN_MY_ACCOUNT = (By.XPATH, "//i[@class='fa fa-user']")
     BTN_MY_ACCOUNT_REGISTER = (By.XPATH, "//a[text()='Register']")
     BTN_CURRENCY = "//button[@class='btn btn-link dropdown-toggle']"
 
     CURRENCIES = (By.XPATH, "//li/button")
     CURRENCY_STRONG = (By.XPATH, "//strong")
-    PRODUCT_CARDS = (By.XPATH, "//div[@class='product-thumb transition']")
-    PRODUCT_CARDS_PRICE = (By.XPATH, "//p[@class='price']")
 
     def __init__(self, browser):
         self.browser = browser
@@ -29,5 +27,5 @@ class MainPage:
         currencies[random_currency].click()
         return self.browser.find_element(*self.CURRENCY_STRONG)
 
-    def check_currency_in_product_card(self, web_element):
+    def check_new_currency(self, web_element):
         assert web_element == self.browser.find_element(*self.CURRENCY_STRONG)
